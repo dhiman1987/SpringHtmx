@@ -27,7 +27,7 @@
     <div th:fragment="taskDetails" id="taskDetails">
 
         <div th:if="${!isProcessing}">
-            <button hx-post="/htmx/sumbit-task"
+            <button hx-post="/htmx/submit-task"
                     hx-swap="outerHTML"
                     hx-target="#taskDetails">Find best deal!</button>
             <h3 th:if="${!tasks.isEmpty()}">Evaluation completed.</h3>
@@ -44,7 +44,7 @@
         <div th:if="${isProcessing}">
             <h3>Evaluating best deals ...</h3>
             <div class="progressBar">
-                <div class="progress" th:text="${completionPercentage}" th:style="${'width:'+ completionPercentage +'%'}"></div>
+                <div class="progress" th:text="${completionPercentage}+'%'" th:style="${'width:'+ completionPercentage +'%'}"></div>
             </div>
             <table hx-get="/htmx/check-status"
                    hx-trigger="load delay:1s"
